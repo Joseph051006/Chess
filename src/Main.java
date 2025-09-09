@@ -28,6 +28,7 @@ public class Main {
         } else if (choice.equals("Multiplayer")) {
             board.setUpBoard();
             board.printBoard();
+            board.reversePieces();
         }
 
     }
