@@ -27,7 +27,6 @@ public class Main {
             System.out.println("Try again later");
         } else if (choice.equals("Multiplayer")) {
             board.setUpBoard();
-            board.printBoard();
             board.reverseBoard();
             String test = bro.nextLine();
             board.printBoard();
