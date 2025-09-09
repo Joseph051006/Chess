@@ -27,10 +27,13 @@ public class Main {
             System.out.println("Try again later");
         } else if (choice.equals("Multiplayer")) {
             board.setUpBoard();
+            board.printBoard();
             while (true) {
-                board.printBoard();
                 String move = bro.nextLine();
-                board.reverseBoard();
+                board.reversePieces();
+                board.printBoard();
+
+
             }
             }
 
