@@ -1,11 +1,10 @@
-import java.util.Arrays;
-
 public class Board {
 
 
     public String[][] board = new String[8][8];
-    private final char[] pieces = {'♖', '♙', '♘', '♙', '♗', '♙', '♕', '♙', '♔', '♙', '♗', '♙', '♘', '♙', '♖', '♙'};
-    private boolean reversedPieces = false;
+    private final char[] whitePieces = {'♙', '♖', '♙', '♘', '♙', '♗', '♙', '♔', '♙', '♕', '♙', '♗', '♙', '♘', '♙', '♖'};
+    private final char[] blackPieces ={'♜', '♟', '♞', '♟', '♝', '♟', '♛', '♟', '♚', '♟', '♝', '♟', '♞', '♟', '♜', '♟'};
+    private boolean reversedBoard = false;
 
     public void setUpBoard() {
 
@@ -15,18 +14,18 @@ public class Board {
             for (int c = 0; c < 8; c++) {
                 this.board[c][r] = "[ ]";
                 if (c < 2) {
-                    if (reversedPieces) {
-                        reversedPieces = false;
-                        reversePieces();
-                    }
-                    this.board[c][r] = board[c][r] = "[" + pieces[c + iterator] + "]";
+//                    if (reversedBoard) {
+//                        reversedBoard = false;
+//                        reverseBoard();
+//                    }
+                    this.board[c][r] = board[c][r] = "[" + blackPieces[c + iterator] + "]";
                 } else if (c > 5) {
 
-                    if (!reversedPieces) {
-                        reversedPieces = true;
-                        reversePieces();
-                    }
-                    this.board[c][r] = board[c][r] = "[" + pieces[c + iterator - 6] + "]";
+//                    if (!reversedBoard) {
+//                        reversedBoard = true;
+//                        reverseBoard();
+//                    }
+                    this.board[c][r] = board[c][r] = "[" + whitePieces[c + iterator - 6] + "]";
                 }
 
             }
@@ -47,24 +46,25 @@ public class Board {
         }
     }
 
-    public void reversePieces() {
+    public void reverseBoard() {
 
-        if (reversedPieces) {
-            for (byte i = 0; i < pieces.length - 1; i++) {
-                char temp = pieces[i];
-                pieces[i] = pieces[i + 1];
-                pieces[i + 1] = temp;
-            }
-        } else {
-            for (byte i = 0; i < pieces.length - 1; i++) {
-                char temp = pieces[i];
-                pieces[i] = pieces[i + 1];
-                pieces[i + 1] = temp;
-            }
+       byte iterator = 0;
 
-            System.out.println(Arrays.toString(pieces));
-        }
+       for (int r = 0; r < 8; r++){
+           for (int c = 0; c < 8; c++){
+               this.board[c][r] = "[ ]";
+               if (c < 2){
+                   this.board[c][r] = "[" + whitePieces[c + iterator] + "]";
+               } else if (c > 5) {
+                   this.board[c][r] = "[" + blackPieces[c + iterator - 6] + "]";
+
+               }
+           }
+           iterator += 2;
+       }
+
 
     }
+
 }
 
