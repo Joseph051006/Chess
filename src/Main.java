@@ -1,9 +1,16 @@
+import logic.Board;
+import logic.Turn;
+import pieces.Pawn;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
 
         Board board = new Board();
+        Turn turn = new Turn();
+        Pawn pawn = new Pawn();
+        String move = "Default";
 
         System.out.println(" _______           _______  _______  _______   \n" +
                 "(  ____ \\|\\     /|(  ____ \\(  ____ \\(  ____ \\  \n" +
@@ -29,9 +36,10 @@ public class Main {
             board.setUpBoard();
             board.printBoard();
             while (true) {
-                String move = bro.nextLine();
-                board.reversePieces();
-                board.printBoard();
+                System.out.println(turn.move +"'s Turn");
+                turn.move = bro.nextLine();
+
+
 
 
             }
