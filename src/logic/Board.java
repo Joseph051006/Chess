@@ -37,10 +37,11 @@ public class Board {
 
         for (int r = 0; r < 8; r++) {
             for (int c = 0; c < 8; c++) {
-                System.out.print(board[r][c] + " "); // Print not print cause yeah
+                System.out.print(this.board[r][c] + " "); // Print not println cause yeah
             }
             System.out.println();
         }
+
     }
 
     public void reverseBoard() {

@@ -36,9 +36,10 @@ public class Main {
             board.setUpBoard();
             board.printBoard();
             while (true) {
-                System.out.println(turn.move +"'s Turn");
-                turn.move = bro.nextLine();
-
+                System.out.println("'s Turn");
+                turn.getCoordinates(bro.nextLine());
+                board.reversePieces();
+                board.printBoard();
 
 
 
