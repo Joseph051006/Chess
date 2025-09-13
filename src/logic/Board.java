@@ -2,7 +2,7 @@ package logic;
 
 public class Board {
 
-
+    public String[][] pieces = new String[8][8];
     public String[][] board = new String[8][8];
     private final char[] whitePieces = {'♙', '♖', '♙', '♘', '♙', '♗', '♙', '♕', '♙', '♔', '♙', '♗', '♙', '♘', '♙', '♖'};
     private final char[] blackPieces ={'♜', '♟', '♞', '♟', '♝', '♟', '♚', '♟', '♛', '♟', '♝', '♟', '♞', '♟', '♜', '♟'};
@@ -43,6 +43,41 @@ public class Board {
         }
 
     }
+
+    //TODO
+    //I probably have to change this function because when i want to move a figure, the board won't be changed. This is
+    //because the reverseBoard and the board is only setting up the starting position of the board. Same with the Figures.
+    //My idea is as follows: I will create a separate char array for the pieces. With this i just can apply the pieces
+    //to the board with ease. The board and pieces changing won't be a problem anymore. The only thing that i have to change
+    //with this approach is, the reverseBoard and reversePieces method.
+
+    public void setPieces(){
+
+        for(byte r = 0; r < 8; r++){
+
+            for(byte c = 0; c < 8; c++){
+
+                if (c < 2) {
+                    this.pieces[c][r] = "[ " + whitePieces[c] + " ]";
+
+                }else if (c > 5){
+                    this.pieces[c][r] = "[ " + blackPieces[c] + " ]";
+
+                }else {
+                    this.pieces[c][r] = "[ ]";
+                }
+
+            }
+
+        }
+
+    }
+
+
+
+
+
+
 
     public void reverseBoard() {
 
