@@ -12,20 +12,19 @@ public class Board {
     public void setUpBoard() {
 
 
-        byte iterator = 0;
+
         for (int r = 0; r < 8; r++) {
             for (int c = 0; c < 8; c++) {
                 this.board[c][r] = "[ ]";
                 if (c < 2) {
-                    this.board[c][r] = board[c][r] = "[" + blackPieces[c + iterator] + "]";
+                    this.board[c][r] = board[c][r] = "[ ]";
                 } else if (c > 5) {
 
 
-                    this.board[c][r] = board[c][r] = "[" + whitePieces[c + iterator - 6] + "]";
+                    this.board[c][r] = board[c][r] = "[ ]";
                 }
 
             }
-            iterator += 2;
         }
 
 
@@ -53,22 +52,24 @@ public class Board {
 
     public void setPieces(){
 
+        byte iterator = 0;
+
         for(byte r = 0; r < 8; r++){
 
             for(byte c = 0; c < 8; c++){
 
                 if (c < 2) {
-                    this.pieces[c][r] = "[ " + whitePieces[c] + " ]";
+                    this.pieces[c][r] = "[" + blackPieces[c + iterator] + "]";
 
                 }else if (c > 5){
-                    this.pieces[c][r] = "[ " + blackPieces[c] + " ]";
+                    this.pieces[c][r] = "[" + whitePieces[c + iterator - 6] + "]";
 
                 }else {
                     this.pieces[c][r] = "[ ]";
                 }
 
             }
-
+            iterator += 2;
         }
 
     }
@@ -81,39 +82,19 @@ public class Board {
 
     public void reverseBoard() {
 
-       byte iterator = 0;
+     this.board = pieces.clone();
 
-        if (!reversedBoard) {
-            for (int r = 0; r < 8; r++){
-                for (int c = 0; c < 8; c++){
-                    this.board[c][r] = "[ ]";
-                    if (c < 2){
-                        this.board[c][r] = "[" + whitePieces[c + iterator] + "]";
-                    } else if (c > 5) {
-                        this.board[c][r] = "[" + blackPieces[c + iterator - 6] + "]";
-
-                    }
-                }
-                iterator += 2;
-            }
-            this.reversedBoard = true;
-        }else {
-            for (int r = 0; r < 8; r++){
-                for (int c = 0; c < 8; c++){
-                    this.board[c][r] = "[ ]";
-                    if (c < 2){
-                        this.board[c][r] = "[" + blackPieces[c + iterator] + "]";
-                    } else if (c > 5) {
-                        this.board[c][r] = "[" + whitePieces[c + iterator - 6] + "]";
-
-                    }
-                }
-                iterator += 2;
-            }
-            this.reversedBoard = false;
-        }
+     for (byte r = 0; r < 8; r++){
+         byte iterator = 7;
+         for (byte c = 0; c < 8; c++){
+             String temp = this.board[c][r];
+            
 
 
+             iterator--;
+         }
+     }
+        printBoard();
 
 
     }

@@ -34,11 +34,13 @@ public class Main {
             System.out.println("Try again later");
         } else if (choice.equals("Multiplayer")) {
             board.setUpBoard();
+            board.setPieces();
             board.printBoard();
+
             while (true) {
                 System.out.println("'s Turn");
-                turn.getCoordinates(bro.nextLine());
-                board.reversePieces();
+                String tess = bro.nextLine();
+                board.reverseBoard();
                 board.printBoard();
 
 
