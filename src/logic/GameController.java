@@ -8,7 +8,7 @@ public class GameController {
 
     void startGame() {}
     void switchTurn() {}
-    void playMove(String move) {}
+    public void playMove(String move) {}
     boolean isCheck(String color) { return false; }
     boolean isCheckmate(String color) { return false; }
 }
