@@ -1,6 +1,6 @@
 package logic;
 
-class Time {
+public class Time {
     int classic;
     int rapid;
     int blitz;

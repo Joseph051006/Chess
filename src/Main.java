@@ -1,16 +1,13 @@
+
 import logic.Board;
-import logic.Turn;
-import pieces.Pawn;
+import logic.GameController;
+import logic.Player;
+import logic.Time;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
-
-        Board board = new Board();
-        Turn turn = new Turn();
-        Pawn pawn = new Pawn();
-        String move = "Default";
 
         System.out.println(" _______           _______  _______  _______   \n" +
                 "(  ____ \\|\\     /|(  ____ \\(  ____ \\(  ____ \\  \n" +
@@ -22,35 +19,19 @@ public class Main {
                 "(_______/|/     \\|(_______/\\_______)\\_______)  \n" +
                 "                                               ");
 
-        System.out.println("Singleplayer");
-        System.out.println("Multiplayer");
-        System.out.println("Exit");
+        GameController gameController = new GameController();
+        Board board = new Board();
+        Player player1 = new Player("Alice", "White");
+        Player player2 = new Player("Bob", "Black");
+        logic.Time timer = new Time();
 
-        Scanner bro = new Scanner(System.in);
-        String choice = bro.nextLine();
-        
+        gameController.board = board;
+        gameController.players[0] = player1;
+        gameController.players[1] = player2;
+        gameController.currentTurn = player1;
+        gameController.timer = timer;
 
-        if(choice.equals("Singleplayer")){
-            System.out.println("Try again later");
-        } else if (choice.equals("Multiplayer")) {
-            board.setUpBoard();
-            board.setPieces();
-            board.printBoard();
-
-            while (true) {
-                System.out.println("'s Turn");
-                String tess = bro.nextLine();
-                board.reverseBoard();
-                pawn.oneForward();
-                board.printBoard();
-                 board.printBoard();
-
-
-
-
-
-            }
-            }
+        System.out.println("Game initialized.");
 
 
     }

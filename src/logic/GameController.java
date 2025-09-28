@@ -1,10 +1,10 @@
 package logic;
 
-class GameController {
-    Board board;
-    Player[] players = new Player[2];
-    Player currentTurn;
-    Time timer;
+public class GameController {
+    public Board board;
+    public Player[] players = new Player[2];
+    public Player currentTurn;
+    public Time timer;
 
     void startGame() {}
     void switchTurn() {}
