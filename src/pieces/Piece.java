@@ -12,3 +12,4 @@ public abstract class Piece implements Movable {
 
     boolean isSameColor(Piece other) { return false; }
 }
+

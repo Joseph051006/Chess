@@ -1,5 +1,7 @@
 package logic;
 
+import pieces.Piece;
+
 class Player {
     String name;
     String color;
