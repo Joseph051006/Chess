@@ -1,8 +1,9 @@
 package logic;
 
-public class Player {
+class Player {
+    String name;
+    String color;
+    java.util.List<Piece> capturedPieces;
 
-    private String black;
-    private String white;
-
+    void makeMove(String move) {}
 }

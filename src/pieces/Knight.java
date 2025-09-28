@@ -1,10 +1,7 @@
 package pieces;
 
-import logic.Pieces;
+class Knight extends Piece {
+    boolean jumping;
 
-public class Knight extends Pieces {
-
-    private boolean jumping;
-
-
+    boolean isValidMove() { return false; }
 }

@@ -1,7 +1,7 @@
 package pieces;
 
-import logic.Pieces;
+class Rook extends Piece {
+    boolean castle;
 
-public class Rook extends Pieces {
-
+    boolean isValidMove() { return false; }
 }

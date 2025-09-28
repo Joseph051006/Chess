@@ -1,10 +1,12 @@
 package logic;
 
-public class Time {
+class Time {
+    int classic;
+    int rapid;
+    int blitz;
+    int bullet;
 
-    private String classic;
-    private String rapid;
-    private String blitz;
-    private String bullet;
-
+    void start() {}
+    void decrement() {}
+    boolean isOutOfTime() { return false; }
 }

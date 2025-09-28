@@ -1,10 +1,9 @@
 package pieces;
 
-import logic.Pieces;
+class King extends Piece {
+    boolean checkmate;
+    boolean castle;
 
-public class King extends Pieces {
-
-    private boolean checkmate = false;
-    private boolean castle = false;
-
+    boolean canCastle() { return false; }
+    boolean isValidMove() { return false; }
 }
