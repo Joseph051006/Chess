@@ -10,6 +10,11 @@ public class Turn {
     private int[] coordinatesX = {1, 2, 3, 4, 5, 6, 7, 8};
     private String regex = "(?<=.)";
 
+    public String[][] currentState;
+
+    public String[][] getBoard() {
+        return currentState = board.board  ;
+    }
 
     private String move;
 
@@ -30,5 +35,7 @@ public class Turn {
 
             }
     }
+
+
 
     }

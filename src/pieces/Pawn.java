@@ -2,11 +2,19 @@ package pieces;
 
 import logic.Board;
 import logic.Pieces;
+import logic.Turn;
 
 
 public class Pawn extends Pieces {
 
-    Board board = new Board();
+
+
+
+
+    public String[][] currentState;
+
+    Turn turn = new Turn();
+
 
     private boolean twoMove = true;
     private boolean enPassant = false;
@@ -14,7 +22,9 @@ public class Pawn extends Pieces {
 
     public void oneForward(){
 
-        board.board[3][2] = board.board[2][1];
+
+        board.pieces[2][3] = board.pieces[1][2];
+        board.board = board.pieces.clone();
         board.printBoard();
 
     }

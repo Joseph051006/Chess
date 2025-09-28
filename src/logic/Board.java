@@ -1,18 +1,22 @@
 package logic;
 
+import pieces.Pawn;
+
 public class Board {
+
+    public Board(){
+        setPieces();
+    }
+
+
 
     public String[][] pieces = new String[8][8];
     public String[][] board = new String[8][8];
     private final char[] whitePieces = {'♙', '♖', '♙', '♘', '♙', '♗', '♙', '♕', '♙', '♔', '♙', '♗', '♙', '♘', '♙', '♖'};
     private final char[] blackPieces ={'♜', '♟', '♞', '♟', '♝', '♟', '♚', '♟', '♛', '♟', '♝', '♟', '♞', '♟', '♜', '♟'};
-    public boolean reversedBoard = false;
-    public boolean reversedPieces = false;
+
 
     public void setUpBoard() {
-
-
-
         for (int r = 0; r < 8; r++) {
             for (int c = 0; c < 8; c++) {
                 this.board[c][r] = "[ ]";
@@ -33,6 +37,7 @@ public class Board {
 
     public void printBoard() {
 
+        this.board = pieces.clone();
 
         for (int r = 0; r < 8; r++) {
             for (int c = 0; c < 8; c++) {
@@ -51,6 +56,8 @@ public class Board {
     //with this approach is, the reverseBoard and reversePieces method.
 
     public void setPieces(){
+
+
 
         byte iterator = 0;
 
@@ -81,58 +88,56 @@ public class Board {
 
 
     public void reverseBoard() {
-
-     this.board = pieces.clone();
-
-     for (byte r = 0; r < 8; r++){
-         byte iterator = 7;
-         for (byte c = 0; c < 8; c++){
-             String temp = this.board[c][r];
-            
-
-
-             iterator--;
-         }
-     }
-        printBoard();
-
-
-    }
-    public void reversePieces() {
-
-        if (reversedPieces) {
-            for (int i = whitePieces.length - 1; i > 0; i--) {
-                char temp = whitePieces[i];
-                whitePieces[i] = whitePieces[i - 1];
-                whitePieces[i - 1] = temp;
+        this.board = pieces.clone();
+        int n = board.length;
+        for (int r = 0; r < n / 2; r++) {
+            for (int c = 0; c < n; c++) {
+                String temp = board[r][c];
+                board[r][c] = board[n - 1 - r][n - 1 - c];
+                board[n - 1 - r][n - 1 - c] = temp;
             }
-
-            for (byte i = 0; i < blackPieces.length - 1; i++) {
-                char temp = blackPieces[i + 1];
-                blackPieces[i+1] = blackPieces[i];
-                blackPieces[i] = temp;
-            }
-            this.reversedPieces = false;
-
-        } else  {
-            for (byte i = 0; i < whitePieces.length - 1; i++) {
-                char temp = whitePieces[i];
-                whitePieces[i] = whitePieces[i + 1];
-                whitePieces[i + 1] = temp;
-            }
-
-            for (int i = blackPieces.length - 1; i > 0; i--) {
-                char temp = blackPieces[i];
-                blackPieces[i] = blackPieces[i - 1];
-                blackPieces[i - 1] = temp;
-            }
-            this.reversedPieces = true;
         }
-        reverseBoard();
-
-
 
     }
+
+
+
+//    public void reversePieces() {
+//
+//        if (reversedPieces) {
+//            for (int i = whitePieces.length - 1; i > 0; i--) {
+//                char temp = whitePieces[i];
+//                whitePieces[i] = whitePieces[i - 1];
+//                whitePieces[i - 1] = temp;
+//            }
+//
+//            for (byte i = 0; i < blackPieces.length - 1; i++) {
+//                char temp = blackPieces[i + 1];
+//                blackPieces[i+1] = blackPieces[i];
+//                blackPieces[i] = temp;
+//            }
+//            this.reversedPieces = false;
+//
+//        } else  {
+//            for (byte i = 0; i < whitePieces.length - 1; i++) {
+//                char temp = whitePieces[i];
+//                whitePieces[i] = whitePieces[i + 1];
+//                whitePieces[i + 1] = temp;
+//            }
+//
+//            for (int i = blackPieces.length - 1; i > 0; i--) {
+//                char temp = blackPieces[i];
+//                blackPieces[i] = blackPieces[i - 1];
+//                blackPieces[i - 1] = temp;
+//            }
+//            this.reversedPieces = true;
+//        }
+//        reverseBoard();
+//
+//
+//
+//    }
+//
 
 }
 

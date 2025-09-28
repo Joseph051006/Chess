@@ -41,7 +41,11 @@ public class Main {
                 System.out.println("'s Turn");
                 String tess = bro.nextLine();
                 board.reverseBoard();
+                pawn.oneForward();
                 board.printBoard();
+                 board.printBoard();
+
+
 
 
 
