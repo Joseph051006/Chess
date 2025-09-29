@@ -5,7 +5,11 @@ import logic.Coordinates;
 
 import java.util.List;
 
-class Queen extends Piece {
+public class Queen extends Piece {
+    public Queen(String color, Coordinates position, String icon) {
+        super(color, position, icon);
+    }
+
     boolean isValidMove() { return false; }
 
     @Override

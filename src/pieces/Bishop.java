@@ -5,7 +5,11 @@ import logic.Coordinates;
 
 import java.util.List;
 
-class Bishop extends Piece {
+public class Bishop extends Piece {
+    public Bishop(String color, Coordinates position, String icon) {
+        super(color, position, icon);
+    }
+
     boolean isValidMove() { return false; }
 
     @Override

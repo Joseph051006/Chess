@@ -5,8 +5,13 @@ import logic.Coordinates;
 
 import java.util.List;
 
-class Rook extends Piece {
+public class Rook extends Piece {
+
     boolean castle;
+
+    public Rook(String color, Coordinates position, String icon) {
+        super(color, position, icon);
+    }
 
     boolean isValidMove() { return false; }
 

@@ -5,9 +5,13 @@ import logic.Coordinates;
 
 import java.util.List;
 
-class King extends Piece {
+public class King extends Piece {
     boolean checkmate;
     boolean castle;
+
+    public King(String color, Coordinates position, String icon) {
+        super(color, position, icon);
+    }
 
     boolean canCastle() { return false; }
     boolean isValidMove() { return false; }

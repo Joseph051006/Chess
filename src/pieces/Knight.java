@@ -5,8 +5,12 @@ import logic.Coordinates;
 
 import java.util.List;
 
-class Knight extends Piece {
+public class Knight extends Piece {
     boolean jumping;
+
+    public Knight(String color, Coordinates position, String icon) {
+        super(color, position, icon);
+    }
 
     boolean isValidMove() { return false; }
 

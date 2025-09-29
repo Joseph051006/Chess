@@ -5,10 +5,14 @@ import logic.Coordinates;
 
 import java.util.List;
 
-class Pawn extends Piece {
+public class Pawn extends Piece {
     boolean twoMove;
     boolean enPassant;
     boolean promotion;
+
+    public Pawn(String color, Coordinates position, String icon) {
+        super(color, position, icon);
+    }
 
     void oneForward() {}
     boolean isValidMove() { return false; }

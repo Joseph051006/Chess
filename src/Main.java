@@ -47,7 +47,7 @@ public class Main {
         Board board = new Board();
 
 
-        logic.Time timer = new Time();
+        Time timer = new Time();
 
         gameController.board = board;
         gameController.players[0] = player1;
@@ -57,7 +57,10 @@ public class Main {
 
         System.out.println("Game initialized.");
 
-        System.out.println(Arrays.deepToString(gameController.));
+        board.setUpBoard();
+        board.printBoard();
+
+
 
     }
 
