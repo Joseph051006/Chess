@@ -2,6 +2,8 @@ package logic;
 
 import pieces.Piece;
 
+import java.util.Arrays;
+
 public class Player {
     String name;
     String color;
@@ -12,5 +14,11 @@ public class Player {
         this.color = color;
     }
 
-    void makeMove(String move) {}
+    //Me want to make move
+    public void makeMove(String move) {
+
+        InputHandler input = new InputHandler();
+        input.parseMove(move);
+
+    }
 }
