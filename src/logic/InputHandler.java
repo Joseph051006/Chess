@@ -11,11 +11,16 @@ class InputHandler {
     private ArrayList<Integer> coordinates = new ArrayList<Integer>();
 
     //Me want to translate for PC
+
+
+
     public Coordinates[] parseMove(String move) {
         removeTo(move);
 
         String regexTwo = "(?<=.)";
         String[] single = concat.split(regexTwo, 4);
+        boolean valid;
+
         System.out.println(Arrays.deepToString(single));
 
         for (byte soEnSiech = 0; soEnSiech < 4; soEnSiech++ ) {
@@ -27,12 +32,10 @@ class InputHandler {
             }
 
         }
-        for (Integer i : coordinates) {
-            System.out.println(i);
-        }
 
-        return new Coordinates[]{
-                new Coordinates(coordinates.get(0), coordinates.get(1)),
+
+        return new Coordinates[]{ (
+                new Coordinates(coordinates.get(0), coordinates.get(1))),
                 new Coordinates(coordinates.get(1), coordinates.get(3))
         };
     }
@@ -69,10 +72,16 @@ class InputHandler {
         }
 
     }
-    //Me want to check if its valid
-    public boolean validateFormat(String move) {
-        return false;
 
+
+    //Me want to check if its valid
+    public boolean validateFormat(Coordinates[] move) {
+
+        String[] from = {String.valueOf(coordinates.get(0)), String.valueOf(coordinates.get(1))};
+        String[] to = {String.valueOf(coordinates.get(2)), String.valueOf(coordinates.get(3))};
+        boolean fromValid = from[0].matches("[1-8]") && from[1].matches("[1-8]");
+        boolean toValid = to[0].matches("[1-8]") && to[1].matches("[1-8]");
+        return (fromValid == toValid);
     }
 
 

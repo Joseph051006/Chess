@@ -18,8 +18,7 @@ public class Player {
     public void makeMove(String move) {
 
         InputHandler input = new InputHandler();
-        input.parseMove(move);
-        System.out.println(Arrays.toString(input.parseMove(move)));
+        input.validateFormat((input.parseMove(move)));
 
     }
 }
