@@ -60,7 +60,8 @@ public class Main {
         board.setUpBoard();
         board.printBoard();
 
-        player1.makeMove(bro.nextLine());
+
+        player1.makeMove(bro.nextLine(), board);
 
     }
 

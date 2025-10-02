@@ -1,5 +1,7 @@
 package logic;
 
+import pieces.Piece;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -9,8 +11,11 @@ class InputHandler {
     private final String[] ROW = {"a","b","c","d","e","f","g","h"};
     private final String[] COLUMN = {"1", "2", "3", "4", "5", "6", "7", "8"};
     private ArrayList<Integer> coordinates = new ArrayList<Integer>();
-
+    Board board = new Board();
     //Me want to translate for PC
+    public InputHandler(Board board){
+        this.board = board;
+    }
 
 
 
@@ -81,7 +86,14 @@ class InputHandler {
         String[] to = {String.valueOf(coordinates.get(2)), String.valueOf(coordinates.get(3))};
         boolean fromValid = from[0].matches("[1-8]") && from[1].matches("[1-8]");
         boolean toValid = to[0].matches("[1-8]") && to[1].matches("[1-8]");
+
+        board.getPieceAt(coordinates.get(0), coordinates.get(1));
+        System.out.println(board.getPieceAt(coordinates.get(0), coordinates.get(1)));
+
+
         return (fromValid == toValid);
+
+
     }
 
 

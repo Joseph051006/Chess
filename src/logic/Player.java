@@ -15,10 +15,12 @@ public class Player {
     }
 
     //Me want to make move
-    public void makeMove(String move) {
+    public void makeMove(String move, Board board) {
 
-        InputHandler input = new InputHandler();
-        input.validateFormat((input.parseMove(move)));
+        InputHandler input = new InputHandler(board);
+        System.out.println(input.validateFormat((input.parseMove(move))));
+
+
 
     }
 }
