@@ -19,6 +19,7 @@ public class Player {
 
         InputHandler input = new InputHandler();
         input.parseMove(move);
+        System.out.println(Arrays.toString(input.parseMove(move)));
 
     }
 }

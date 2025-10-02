@@ -8,10 +8,10 @@ class InputHandler {
     String concat;
     private final String[] ROW = {"a","b","c","d","e","f","g","h"};
     private final String[] COLUMN = {"1", "2", "3", "4", "5", "6", "7", "8"};
-    private ArrayList<String> coordinates = new ArrayList<String>();
+    private ArrayList<Integer> coordinates = new ArrayList<Integer>();
 
     //Me want to translate for PC
-    public Coordinates parseMove(String move) {
+    public Coordinates[] parseMove(String move) {
         removeTo(move);
 
         String regexTwo = "(?<=.)";
@@ -27,16 +27,14 @@ class InputHandler {
             }
 
         }
-        for (String i : coordinates) {
+        for (Integer i : coordinates) {
             System.out.println(i);
         }
 
-        return null;
-    }
-    //Me want to check if its valid
-    public boolean validateFormat(String move) {
-        return false;
-
+        return new Coordinates[]{
+                new Coordinates(coordinates.get(0), coordinates.get(1)),
+                new Coordinates(coordinates.get(1), coordinates.get(3))
+        };
     }
 
     public void removeTo(String move){
@@ -53,7 +51,7 @@ class InputHandler {
         for (byte iterator = 0; iterator < ROW.length; iterator++) {
             if (ROW[iterator].equals(single[soEnSiech])) {
 
-                coordinates.add(String.valueOf(iterator));
+                coordinates.add((int) iterator);
 
             }
         }
@@ -65,12 +63,18 @@ class InputHandler {
         for (byte iterator = 0; iterator < COLUMN.length; iterator++){
             if (COLUMN[iterator].equals(single[soEnSiech])){
 
-                coordinates.add(String.valueOf(iterator + 1));
+                coordinates.add((int) iterator);
 
             }
         }
 
     }
+    //Me want to check if its valid
+    public boolean validateFormat(String move) {
+        return false;
+
+    }
+
 
 
 
