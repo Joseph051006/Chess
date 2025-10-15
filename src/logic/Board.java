@@ -3,8 +3,6 @@ package logic;
 import pieces.Piece;
 import pieces.*;
 
-import java.util.Arrays;
-
 public class Board {
     public Piece[][] grid;
 
@@ -74,13 +72,32 @@ public class Board {
         }
 
     }
-    Piece getPieceAt(int x, int y) {
+    Piece getPieceAt(int x, int y, Board board) {
+
+        if(grid[y][x] == null){
+            System.out.println("Theres no piece");
+        }else {
+            System.out.println(grid[y][x].getClass());
+
+            if (grid[y][x] instanceof Pawn){
+                grid[y][x].isValidMove();
+
+            } else if (grid[y][x] instanceof Knight) {
+                
+            } else if (grid[y][x] instanceof Bishop) {
+
+            } else if (grid[y][x] instanceof King) {
+
+            } else if (grid[y][x] instanceof Queen) {
+
+            } else if (grid[y][x] instanceof Rook) {
+
+            }
 
 
-            System.out.println(grid[y][x]);
+        }
 
-
-        return grid[x][y];
+        return grid[y][x];
     }
     void movePiece(int fromX, int fromY, int toX, int toY) {}
     boolean isPathClear(int fromX, int fromY, int toX, int toY) { return false; }

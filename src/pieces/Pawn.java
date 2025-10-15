@@ -20,6 +20,10 @@ public class Pawn extends Piece {
 
     @Override
     public boolean isValidMove(Coordinates from, Coordinates to, Board board) {
+
+
+
+
         return false;
     }
 
