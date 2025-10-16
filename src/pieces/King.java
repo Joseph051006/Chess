@@ -21,8 +21,4 @@ public class King extends Piece {
         return false;
     }
 
-    @Override
-    public List<Coordinates> getPossibleMoves(Board board) {
-        return List.of();
-    }
 }

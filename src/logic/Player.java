@@ -14,7 +14,6 @@ public class Player {
         this.color = color;
     }
 
-    //Me want to make move
     public void makeMove(String move, Board board) {
 
         InputHandler input = new InputHandler(board);

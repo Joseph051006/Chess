@@ -4,14 +4,14 @@ import logic.Coordinates;
 
 
 public abstract class Piece implements Movable {
-    String color;
+    public String color;
     Coordinates position;
     String icon;
     int value;
     boolean captured;
 
     @Override
-    public String toString(){
+    public String toString() {
         return icon;
     }
 
@@ -21,5 +21,7 @@ public abstract class Piece implements Movable {
         this.icon = icon;
     }
 
-    boolean isSameColor(Piece other) { return false; }
+    boolean isSameColor(Piece other) {
+        return false;
+    }
 }

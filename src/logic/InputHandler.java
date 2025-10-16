@@ -1,6 +1,6 @@
 package logic;
 
-import pieces.Piece;
+import pieces.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,15 +8,15 @@ import java.util.Arrays;
 class InputHandler {
     String regex;
     String concat;
-    private final String[] ROW = {"a","b","c","d","e","f","g","h"};
+    private final String[] ROW = {"a", "b", "c", "d", "e", "f", "g", "h"};
     private final String[] COLUMN = {"1", "2", "3", "4", "5", "6", "7", "8"};
     private final ArrayList<Integer> coordinates = new ArrayList<Integer>();
     Board board = new Board();
-    //Me want to translate for PC
-    public InputHandler(Board board){
+
+    
+    public InputHandler(Board board) {
         this.board = board;
     }
-
 
 
     public Coordinates[] parseMove(String move) {
@@ -28,24 +28,24 @@ class InputHandler {
 
         System.out.println(Arrays.deepToString(single));
 
-        for (byte soEnSiech = 0; soEnSiech < 4; soEnSiech++ ) {
+        for (byte distribute = 0; distribute < 4; distribute++) {
 
-            if (soEnSiech == 0 || soEnSiech == 2) {
-                rowCoordinates(soEnSiech, single);
+            if (distribute == 0 || distribute == 2) {
+                rowCoordinates(distribute, single);
             } else {
-                columnCoordinates(soEnSiech, single);
+                columnCoordinates(distribute, single);
             }
 
         }
 
 
-        return new Coordinates[]{ (
+        return new Coordinates[]{(
                 new Coordinates(coordinates.get(0), coordinates.get(1))),
                 new Coordinates(coordinates.get(1), coordinates.get(3))
         };
     }
 
-    public void removeTo(String move){
+    public void removeTo(String move) {
         regex = " ";
         String[] split = move.split(regex, 3);
         String from = split[0];
@@ -54,7 +54,7 @@ class InputHandler {
 
     }
 
-    public void rowCoordinates(byte soEnSiech, String[] single){
+    public void rowCoordinates(byte soEnSiech, String[] single) {
 
         for (byte iterator = 0; iterator < ROW.length; iterator++) {
             if (ROW[iterator].equals(single[soEnSiech])) {
@@ -66,10 +66,10 @@ class InputHandler {
 
     }
 
-    public void columnCoordinates(byte soEnSiech, String[] single){
+    public void columnCoordinates(byte soEnSiech, String[] single) {
 
-        for (byte iterator = 0; iterator < COLUMN.length; iterator++){
-            if (COLUMN[iterator].equals(single[soEnSiech])){
+        for (byte iterator = 0; iterator < COLUMN.length; iterator++) {
+            if (COLUMN[iterator].equals(single[soEnSiech])) {
 
                 coordinates.add((int) iterator);
 
@@ -79,26 +79,48 @@ class InputHandler {
     }
 
 
-    //Me want to check if its valid
     public boolean validateFormat(Coordinates[] move) {
 
-        String[] from = {String.valueOf(coordinates.get(0)), String.valueOf(coordinates.get(1))};
-        String[] to = {String.valueOf(coordinates.get(2)), String.valueOf(coordinates.get(3))};
-        boolean fromValid = from[0].matches("[1-8]") && from[1].matches("[1-8]");
-        boolean toValid = to[0].matches("[1-8]") && to[1].matches("[1-8]");
-        board.getPieceAt(coordinates.get(0), coordinates.get(1), board);
-    
+        String[] validFrom = {String.valueOf(coordinates.get(0)), String.valueOf(coordinates.get(1))};
+        String[] validTo = {String.valueOf(coordinates.get(2)), String.valueOf(coordinates.get(3))};
+        boolean fromValid = validFrom[0].matches("[1-8]") && validFrom[1].matches("[1-8]");
+        boolean toValid = validTo[0].matches("[1-8]") && validTo[1].matches("[1-8]");
 
-        return (fromValid == toValid);
+
+
+        Piece selectedPiece = board.getPieceAt(coordinates.get(0), coordinates.get(1), board);
+
+
+
+        if (selectedPiece == null) {
+            System.out.println("No Piece there");
+        }else {
+            Coordinates to = new Coordinates(coordinates.get(2),coordinates.get(3));
+            Coordinates from = new Coordinates(coordinates.get(0),coordinates.get(1));
+            switch (selectedPiece) {
+                case Pawn pawn -> selectedPiece.isValidMove(from, to, board);
+                case Knight knight -> selectedPiece.isValidMove(from, to, board);
+                case Bishop bishop -> selectedPiece.isValidMove(from, to, board);
+                case King king -> selectedPiece.isValidMove(from, to, board);
+                case Queen queen -> selectedPiece.isValidMove(from, to, board);
+                case Rook rook -> selectedPiece.isValidMove(from, to, board);
+                default -> {
+                    System.out.println("lol");
+                }
+            }
+
+        }
+
+        if (!(fromValid == toValid)) {
+            System.out.println("This is an Illegal move");
+            return false;
+
+        } else {
+            return true;
+        }
 
 
     }
-
-
-
-
-
-
 
 
 }

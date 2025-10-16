@@ -16,11 +16,8 @@ public class Knight extends Piece {
 
     @Override
     public boolean isValidMove(Coordinates from, Coordinates to, Board board) {
+        System.out.println("Knight");
         return false;
     }
 
-    @Override
-    public List<Coordinates> getPossibleMoves(Board board) {
-        return List.of();
-    }
 }

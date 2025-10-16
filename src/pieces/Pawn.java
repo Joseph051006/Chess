@@ -14,23 +14,21 @@ public class Pawn extends Piece {
         super(color, position, icon);
     }
 
-    void oneForward() {}
-    boolean isValidMove() { return false; }
-    void promote(Piece newPiece) {}
+
+    boolean isValidMove() {
+        return false;
+    }
+
+    void promote(Piece newPiece) {
+    }
 
     @Override
     public boolean isValidMove(Coordinates from, Coordinates to, Board board) {
-
-
-
+        System.out.println("Pawn");
 
         return false;
     }
 
-    @Override
-    public List<Coordinates> getPossibleMoves(Board board) {
-        return List.of();
-    }
 }
 
 

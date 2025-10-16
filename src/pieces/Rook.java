@@ -17,11 +17,8 @@ public class Rook extends Piece {
 
     @Override
     public boolean isValidMove(Coordinates from, Coordinates to, Board board) {
+        System.out.println("Rook");
         return false;
     }
 
-    @Override
-    public List<Coordinates> getPossibleMoves(Board board) {
-        return List.of();
-    }
 }
