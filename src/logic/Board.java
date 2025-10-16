@@ -80,7 +80,7 @@ public class Board {
             System.out.println(grid[y][x].getClass());
 
             if (grid[y][x] instanceof Pawn){
-                grid[y][x].isValidMove();
+
 
             } else if (grid[y][x] instanceof Knight) {
                 
