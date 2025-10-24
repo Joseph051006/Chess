@@ -6,6 +6,7 @@ import logic.GameController;
 import logic.Player;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Knight extends Piece {
     boolean jumping;
@@ -14,12 +15,23 @@ public class Knight extends Piece {
         super(color, position, icon);
     }
 
-    boolean isValidMove() { return false; }
 
     @Override
     public boolean isValidMove(Coordinates from, Coordinates to, Board board, Player currentTurn, Piece selectedPiece) {
-        System.out.println("Knight");
-        return false;
+        System.out.println("Pawn");
+
+        String playerColor = currentTurn.getColor();
+
+        if (Objects.equals(playerColor, selectedPiece.color)){
+            System.out.println(playerColor);
+            checkPattern(from, to, board);
+            return true;
+
+        } else {
+            System.out.println("Not your turn");
+            System.out.println(playerColor);
+            return false;
+        }
     }
 
     @Override

@@ -1,5 +1,8 @@
 package logic;
 
+import pieces.King;
+import pieces.Piece;
+
 import java.util.Scanner;
 
 public class GameController {
@@ -39,30 +42,42 @@ public class GameController {
 
     }
     public void playMove() {
-        if (currentTurn == player1){
+        boolean validMove = false;
 
+        while (!validMove) {
+            if (currentTurn == player1) {
+                System.out.println("Code of player one");
 
-            System.out.println("Code of player one");
-            if ((possible(player1))){
-                switchTurn(currentTurn, board);
-            }else {
-                System.out.println("Invalid Move. Fuck You");
-            }
+                if (possible(player1)) {
+                    validMove = true;
 
-        }else{
-            System.out.println("code of player Two");
-            if ((possible(player1))){
-                switchTurn(currentTurn, board);
-            }else {
-                System.out.println("Invalid Move. Fuck You");
+                    if (isCheckmate("white", board)) {
+                        System.out.println("Black wins!");
+                        System.exit(0);
+                    }
+
+                    switchTurn(currentTurn, board);
+                } else {
+                    System.out.println("Invalid move. Try again.");
+                }
+
+            } else {
+                System.out.println("Code of player two");
+
+                if (possible(player2)) {
+                    validMove = true;
+
+                    if (isCheckmate("black", board)) {
+                        System.out.println("White wins!");
+                        System.exit(0);
+                    }
+
+                    switchTurn(currentTurn, board);
+                } else {
+                    System.out.println("Invalid move. Try again.");
+                }
             }
         }
-
-
-
-
-
-
     }
 
     void createPlayer() {
@@ -93,5 +108,18 @@ public class GameController {
 
 
     boolean isCheck(String color) { return false; }
-    boolean isCheckmate(String color) { return false; }
+
+    public boolean isCheckmate(String color, Board board) {
+        for (int x = 0; x < 8; x++) {
+            for (int y = 0; y < 8; y++) {
+                Piece piece = board.grid[x][y];
+                if (piece != null && piece instanceof King && piece.color.equals(color)) {
+                    return false;
+                }
+            }
+        }
+
+
+        return true;
+    }
 }

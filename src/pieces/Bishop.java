@@ -6,6 +6,7 @@ import logic.GameController;
 import logic.Player;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Bishop extends Piece {
     public Bishop(String color, Coordinates position, String icon) {
@@ -16,7 +17,20 @@ public class Bishop extends Piece {
 
     @Override
     public boolean isValidMove(Coordinates from, Coordinates to, Board board, Player currentTurn, Piece selectedPiece) {
-        return false;
+        System.out.println("Pawn");
+
+        String playerColor = currentTurn.getColor();
+
+        if (Objects.equals(playerColor, selectedPiece.color)){
+            System.out.println(playerColor);
+            checkPattern(from, to, board);
+            return true;
+
+        } else {
+            System.out.println("Not your turn");
+            System.out.println(playerColor);
+            return false;
+        }
     }
 
     @Override
