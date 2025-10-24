@@ -12,8 +12,9 @@ class InputHandler {
     private final String[] COLUMN = {"1", "2", "3", "4", "5", "6", "7", "8"};
     private final ArrayList<Integer> coordinates = new ArrayList<Integer>();
     Board board = new Board();
+    GameController game = new GameController();
+    GameController currentTurn;
 
-    
     public InputHandler(Board board) {
         this.board = board;
     }
@@ -41,7 +42,7 @@ class InputHandler {
 
         return new Coordinates[]{(
                 new Coordinates(coordinates.get(0), coordinates.get(1))),
-                new Coordinates(coordinates.get(1), coordinates.get(3))
+                new Coordinates(coordinates.get(2), coordinates.get(3))
         };
     }
 
@@ -87,40 +88,42 @@ class InputHandler {
         boolean toValid = validTo[0].matches("[1-8]") && validTo[1].matches("[1-8]");
 
 
-
         Piece selectedPiece = board.getPieceAt(coordinates.get(0), coordinates.get(1), board);
-
-
+        System.out.println(selectedPiece);
 
         if (selectedPiece == null) {
             System.out.println("No Piece there");
-        }else {
-            Coordinates to = new Coordinates(coordinates.get(2),coordinates.get(3));
-            Coordinates from = new Coordinates(coordinates.get(0),coordinates.get(1));
+            return false;
+        } else {
+            Coordinates to = new Coordinates(coordinates.get(2), coordinates.get(3));
+            Coordinates from = new Coordinates(coordinates.get(0), coordinates.get(1));
+            System.out.println(from.x + " " + from.y);
+            System.out.println(to.x + " " + to.x);
+
             switch (selectedPiece) {
-                case Pawn pawn -> selectedPiece.isValidMove(from, to, board);
-                case Knight knight -> selectedPiece.isValidMove(from, to, board);
-                case Bishop bishop -> selectedPiece.isValidMove(from, to, board);
-                case King king -> selectedPiece.isValidMove(from, to, board);
-                case Queen queen -> selectedPiece.isValidMove(from, to, board);
-                case Rook rook -> selectedPiece.isValidMove(from, to, board);
+                case Pawn pawn -> selectedPiece.isValidMove(from, to, board, currentTurn);
+                case Knight knight -> selectedPiece.isValidMove(from, to, board, currentTurn);
+                case Bishop bishop -> selectedPiece.isValidMove(from, to, board, currentTurn);
+                case King king -> selectedPiece.isValidMove(from, to, board, currentTurn);
+                case Queen queen -> selectedPiece.isValidMove(from, to, board, currentTurn);
+                case Rook rook -> selectedPiece.isValidMove(from, to, board, currentTurn);
                 default -> {
                     System.out.println("lol");
                 }
+
+
+            }
+            if (selectedPiece.isValidMove(from, to, board, currentTurn)) {
+
+                board.movePiece(from.x, from.y,to.x, to.y, board);
+
+                return true;
+
+
             }
 
         }
-
-        if (!(fromValid == toValid)) {
-            System.out.println("This is an Illegal move");
-            return false;
-
-        } else {
-            return true;
-        }
-
+        return false;
 
     }
-
-
 }

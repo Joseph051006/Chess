@@ -14,12 +14,16 @@ public class Player {
         this.color = color;
     }
 
-    public void makeMove(String move, Board board) {
+    public Boolean makeMove(String move, Board board) {
 
         InputHandler input = new InputHandler(board);
-        System.out.println(input.validateFormat((input.parseMove(move))));
+        input.validateFormat((input.parseMove(move)));
 
+        return input.validateFormat((input.parseMove(move)));
 
+    }
+
+    public void createPlayer(){
 
     }
 }
