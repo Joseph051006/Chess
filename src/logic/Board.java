@@ -13,39 +13,43 @@ public class Board {
 
     public void setUpBoard() {
 
-        this.grid[7][0] = new Rook("White", new Coordinates(7, 0), "♖");
-        this.grid[7][7] = new Rook("Black", new Coordinates(7, 7), "♜");
-        this.grid[0][7] = new Rook("Black", new Coordinates(0, 7), "♜");
-        this.grid[0][0] = new Rook("White", new Coordinates(0, 0), "♖");
-        this.grid[6][0] = new Knight("White", new Coordinates(6, 0), "♘");
-        this.grid[6][7] = new Knight("Black", new Coordinates(6, 7), "♞");
-        this.grid[1][7] = new Knight("Black", new Coordinates(1, 7), "♞");
-        this.grid[1][0] = new Knight("White", new Coordinates(1, 0), "♘");
-        this.grid[5][0] = new Bishop("White", new Coordinates(5, 0), "♗");
-        this.grid[5][7] = new Bishop("Black", new Coordinates(5, 7), "♝");
-        this.grid[2][7] = new Bishop("Black", new Coordinates(2, 7), "♝");
-        this.grid[2][0] = new Bishop("White", new Coordinates(2, 0), "♗");
-        this.grid[3][0] = new Queen("White", new Coordinates(3, 0), "♕");
-        this.grid[3][7] = new Queen("Black", new Coordinates(3, 7), "♛");
-        this.grid[4][0] = new King("White", new Coordinates(4, 0), "♔");
-        this.grid[4][7] = new King("Black", new Coordinates(4, 7), "♚");
-        this.grid[0][1] = new Pawn("White", new Coordinates(0, 1), "♙");
-        this.grid[1][1] = new Pawn("White", new Coordinates(1, 1), "♙");
-        this.grid[2][1] = new Pawn("White", new Coordinates(2, 1), "♙");
-        this.grid[3][1] = new Pawn("White", new Coordinates(3, 1), "♙");
-        this.grid[4][1] = new Pawn("White", new Coordinates(4, 1), "♙");
-        this.grid[5][1] = new Pawn("White", new Coordinates(5, 1), "♙");
-        this.grid[6][1] = new Pawn("White", new Coordinates(6, 1), "♙");
-        this.grid[7][1] = new Pawn("White", new Coordinates(7, 1), "♙");
-        this.grid[0][6] = new Pawn("Black", new Coordinates(0, 6), "♟");
-        this.grid[1][6] = new Pawn("Black", new Coordinates(1, 6), "♟");
-        this.grid[2][6] = new Pawn("Black", new Coordinates(2, 6), "♟");
-        this.grid[3][6] = new Pawn("Black", new Coordinates(3, 6), "♟");
-        this.grid[4][6] = new Pawn("Black", new Coordinates(4, 6), "♟");
-        this.grid[5][6] = new Pawn("Black", new Coordinates(5, 6), "♟");
-        this.grid[6][6] = new Pawn("Black", new Coordinates(6, 6), "♟");
-        this.grid[7][6] = new Pawn("Black", new Coordinates(7, 6), "♟");
+        this.grid[7][0] = new Rook("white", new Coordinates(7, 0), "♖");
+        this.grid[7][7] = new Rook("black", new Coordinates(7, 7), "♜");
+        this.grid[0][7] = new Rook("black", new Coordinates(0, 7), "♜");
+        this.grid[0][0] = new Rook("white", new Coordinates(0, 0), "♖");
 
+        this.grid[6][0] = new Knight("white", new Coordinates(6, 0), "♘");
+        this.grid[6][7] = new Knight("black", new Coordinates(6, 7), "♞");
+        this.grid[1][7] = new Knight("black", new Coordinates(1, 7), "♞");
+        this.grid[1][0] = new Knight("white", new Coordinates(1, 0), "♘");
+
+        this.grid[5][0] = new Bishop("white", new Coordinates(5, 0), "♗");
+        this.grid[5][7] = new Bishop("black", new Coordinates(5, 7), "♝");
+        this.grid[2][7] = new Bishop("black", new Coordinates(2, 7), "♝");
+        this.grid[2][0] = new Bishop("white", new Coordinates(2, 0), "♗");
+
+        this.grid[3][0] = new Queen("white", new Coordinates(3, 0), "♕");
+        this.grid[3][7] = new Queen("black", new Coordinates(3, 7), "♛");
+
+        this.grid[4][0] = new King("white", new Coordinates(4, 0), "♔");
+        this.grid[4][7] = new King("black", new Coordinates(4, 7), "♚");
+
+        this.grid[0][1] = new Pawn("white", new Coordinates(0, 1), "♙");
+        this.grid[1][1] = new Pawn("white", new Coordinates(1, 1), "♙");
+        this.grid[2][1] = new Pawn("white", new Coordinates(2, 1), "♙");
+        this.grid[3][1] = new Pawn("white", new Coordinates(3, 1), "♙");
+        this.grid[4][1] = new Pawn("white", new Coordinates(4, 1), "♙");
+        this.grid[5][1] = new Pawn("white", new Coordinates(5, 1), "♙");
+        this.grid[6][1] = new Pawn("white", new Coordinates(6, 1), "♙");
+        this.grid[7][1] = new Pawn("white", new Coordinates(7, 1), "♙");
+        this.grid[0][6] = new Pawn("black", new Coordinates(0, 6), "♟");
+        this.grid[1][6] = new Pawn("black", new Coordinates(1, 6), "♟");
+        this.grid[2][6] = new Pawn("black", new Coordinates(2, 6), "♟");
+        this.grid[3][6] = new Pawn("black", new Coordinates(3, 6), "♟");
+        this.grid[4][6] = new Pawn("black", new Coordinates(4, 6), "♟");
+        this.grid[5][6] = new Pawn("black", new Coordinates(5, 6), "♟");
+        this.grid[6][6] = new Pawn("black", new Coordinates(6, 6), "♟");
+        this.grid[7][6] = new Pawn("black", new Coordinates(7, 6), "♟");
 
     }
 

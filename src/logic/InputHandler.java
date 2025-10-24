@@ -80,7 +80,7 @@ class InputHandler {
     }
 
 
-    public boolean validateFormat(Coordinates[] move) {
+    public boolean validateFormat(Coordinates[] move, Player currentTurn) {
 
         String[] validFrom = {String.valueOf(coordinates.get(0)), String.valueOf(coordinates.get(1))};
         String[] validTo = {String.valueOf(coordinates.get(2)), String.valueOf(coordinates.get(3))};
@@ -103,19 +103,19 @@ class InputHandler {
             System.out.println(to.x + " " + to.x);
 
             switch (selectedPiece) {
-                case Pawn pawn -> selectedPiece.isValidMove(from, to, board, currentTurn);
-                case Knight knight -> selectedPiece.isValidMove(from, to, board, currentTurn);
-                case Bishop bishop -> selectedPiece.isValidMove(from, to, board, currentTurn);
-                case King king -> selectedPiece.isValidMove(from, to, board, currentTurn);
-                case Queen queen -> selectedPiece.isValidMove(from, to, board, currentTurn);
-                case Rook rook -> selectedPiece.isValidMove(from, to, board, currentTurn);
+                case Pawn pawn -> selectedPiece.isValidMove(from, to, board, currentTurn, selectedPiece);
+                case Knight knight -> selectedPiece.isValidMove(from, to, board, currentTurn, selectedPiece);
+                case Bishop bishop -> selectedPiece.isValidMove(from, to, board, currentTurn, selectedPiece);
+                case King king -> selectedPiece.isValidMove(from, to, board, currentTurn, selectedPiece);
+                case Queen queen -> selectedPiece.isValidMove(from, to, board, currentTurn, selectedPiece);
+                case Rook rook -> selectedPiece.isValidMove(from, to, board, currentTurn, selectedPiece);
                 default -> {
                     System.out.println("lol");
                 }
 
 
             }
-            if (selectedPiece.isValidMove(from, to, board, currentTurn)) {
+            if (selectedPiece.isValidMove(from, to, board, currentTurn, selectedPiece)) {
 
                 board.movePiece(from.x, from.y,to.x, to.y, board);
 

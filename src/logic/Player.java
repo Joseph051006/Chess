@@ -14,15 +14,18 @@ public class Player {
         this.color = color;
     }
 
-    public Boolean makeMove(String move, Board board) {
+    public Boolean makeMove(String move, Board board, Player currentTurn) {
 
         InputHandler input = new InputHandler(board);
 
-        return input.validateFormat((input.parseMove(move)));
+        return input.validateFormat((input.parseMove(move)), currentTurn);
 
     }
 
-    public void createPlayer(){
-
+    public String getColor() {
+        return color;
     }
+
+
+
 }

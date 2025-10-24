@@ -32,7 +32,9 @@ public class GameController {
             playMove();
         }else {
             this.currentTurn = player1;
+            board.switchBoard(board);
             playMove();
+
         }
 
     }
@@ -71,10 +73,10 @@ public class GameController {
 
             if (increment == 1) {
                 System.out.println("Please Enter your name Player " + increment);
-                player2 = new Player(bro.nextLine(), "Black");
+                player2 = new Player(bro.nextLine(), "black");
             } else {
                 System.out.println("Please Enter your name Player " + increment);
-                player1 = new Player(bro.nextLine(), "White");
+                player1 = new Player(bro.nextLine(), "white");
             }
 
             currentTurn = player1;
@@ -84,7 +86,7 @@ public class GameController {
 
     public boolean possible(Player player){
         String moveInput = bro.nextLine();
-        boolean moveResult = player.makeMove(moveInput, board);
+        boolean moveResult = player.makeMove(moveInput, board, currentTurn);
         System.out.println("Move result: " + moveResult);
         return moveResult;
     }

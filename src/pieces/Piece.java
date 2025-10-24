@@ -3,6 +3,7 @@ package pieces;
 import logic.Board;
 import logic.Coordinates;
 import logic.GameController;
+import logic.Player;
 
 
 public abstract class Piece implements Movable {
@@ -27,5 +28,7 @@ public abstract class Piece implements Movable {
         return false;
     }
 
-    public abstract boolean isValidMove(Coordinates from, Coordinates to, Board board, GameController currentTurn);
+    public abstract boolean isValidMove(Coordinates from, Coordinates to, Board board, Player currentTurn, Piece selectedPiece);
+
+    public abstract boolean checkPattern(Coordinates from, Coordinates to, Board board);
 }
