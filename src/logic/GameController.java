@@ -9,10 +9,6 @@ public class GameController {
     public Time timer;
     Player player2 = null;
     Player player1 = null;
-    public int fromX;
-    public int fromY;
-    public int toX;
-    public int toY;
     Scanner bro = new Scanner(System.in);
     public GameController(){
 
@@ -33,8 +29,10 @@ public class GameController {
         if (currentTurn == player1 ){
             this.currentTurn = player2;
             board.switchBoard(board);
+            playMove();
         }else {
             this.currentTurn = player1;
+            playMove();
         }
 
     }
@@ -46,13 +44,16 @@ public class GameController {
             if ((possible(player1))){
                 switchTurn(currentTurn, board);
             }else {
-                System.out.println("Okay and why?");
+                System.out.println("Invalid Move. Fuck You");
             }
-
-
 
         }else{
             System.out.println("code of player Two");
+            if ((possible(player1))){
+                switchTurn(currentTurn, board);
+            }else {
+                System.out.println("Invalid Move. Fuck You");
+            }
         }
 
 
@@ -82,8 +83,10 @@ public class GameController {
     }
 
     public boolean possible(Player player){
-        bro.nextLine();
-        return player.makeMove(bro.nextLine(), board);
+        String moveInput = bro.nextLine();
+        boolean moveResult = player.makeMove(moveInput, board);
+        System.out.println("Move result: " + moveResult);
+        return moveResult;
     }
 
 

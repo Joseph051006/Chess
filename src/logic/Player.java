@@ -17,7 +17,6 @@ public class Player {
     public Boolean makeMove(String move, Board board) {
 
         InputHandler input = new InputHandler(board);
-        input.validateFormat((input.parseMove(move)));
 
         return input.validateFormat((input.parseMove(move)));
 

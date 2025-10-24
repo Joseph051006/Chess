@@ -97,6 +97,8 @@ class InputHandler {
         } else {
             Coordinates to = new Coordinates(coordinates.get(2), coordinates.get(3));
             Coordinates from = new Coordinates(coordinates.get(0), coordinates.get(1));
+
+            System.out.println("ValidateFromat test");
             System.out.println(from.x + " " + from.y);
             System.out.println(to.x + " " + to.x);
 
