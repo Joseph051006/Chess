@@ -21,7 +21,27 @@ public class Queen extends Piece {
 
     @Override
     public boolean checkPattern(Coordinates from, Coordinates to, Board board) {
-        return false;
+        Piece target = board.grid[to.x][to.y];
+        String color = board.grid[from.x][from.y].color;
+
+        boolean isDiagonal = Math.abs(to.x - from.x) == Math.abs(to.y - from.y);
+        boolean isStraight = (to.x == from.x || to.y == from.y);
+
+        if (!isDiagonal && !isStraight) return false;
+
+        int dx = Integer.compare(to.x, from.x);
+        int dy = Integer.compare(to.y, from.y);
+
+        int x = from.x + dx;
+        int y = from.y + dy;
+
+        while (x != to.x || y != to.y) {
+            if (board.grid[x][y] != null) return false; // blocked
+            x += dx;
+            y += dy;
+        }
+
+        return target == null || !target.color.equals(color);
     }
 
 

@@ -25,7 +25,16 @@ public class King extends Piece {
 
     @Override
     public boolean checkPattern(Coordinates from, Coordinates to, Board board) {
-        return false;
+        Piece target = board.grid[to.x][to.y];
+        String color = board.grid[from.x][from.y].color;
+
+        int dx = Math.abs(to.x - from.x);
+        int dy = Math.abs(to.y - from.y);
+
+        // King moves one square in any direction
+        if (dx > 1 || dy > 1) return false;
+
+        return target == null || !target.color.equals(color);
     }
 
 }
