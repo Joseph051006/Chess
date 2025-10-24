@@ -6,6 +6,7 @@ import pieces.*;
 public class Board {
     public Piece[][] grid;
     private boolean isBoardFlipped = false;
+
     public Board() {
         grid = new Piece[8][8];
     }
@@ -54,8 +55,8 @@ public class Board {
     }
 
     public void printBoard(Board board) {
-        for (int y = 7; y >= 0; y--) {  // Von Reihe 8 bis 1 (7 bis 0)
-            for (int x = 0; x < 8; x++) {  // Von Spalte a bis h (0 bis 7)
+        for (int y = 7; y >= 0; y--) {
+            for (int x = 0; x < 8; x++) {
                 if (grid[x][y] == null) {
                     System.out.print("[   ]");
                 } else {
@@ -80,33 +81,30 @@ public class Board {
     }
 
     void movePiece(int fromX, int fromY, int toX, int toY, Board board) {
-        System.out.println("movePiece test");
-        System.out.println( fromX+ " " + fromY);
-        System.out.println(toX + " " + toY);
+//        System.out.println("movePiece test");
+//        System.out.println( fromX+ " " + fromY);
+//        System.out.println(toX + " " + toY);
 
 
         Piece piece = board.grid[fromX][fromY];
-        if (piece == null){
+        if (piece == null) {
             System.out.println("No Piece there");
             return;
         }
-         // move it to the new square
+
 
         board.grid[toX][toY] = board.grid[fromX][fromY];
         board.grid[fromX][fromY] = null;
 
-        board.printBoard(board);
+
 
     }
 
-    boolean isPathClear(int fromX, int fromY, int toX, int toY) {
-        return false;
-    }
 
 
 
     public void switchBoard(Board board) {
-        isBoardFlipped = !isBoardFlipped; // Toggle zwischen true/false
+        isBoardFlipped = !isBoardFlipped;
 
         if (isBoardFlipped) {
             // Schwarz unten
@@ -123,7 +121,7 @@ public class Board {
                 }
             }
         } else {
-            // Weiß unten
+            // Weiss unten
             for (int y = 7; y >= 0; y--) {
                 for (int x = 0; x < 8; x++) {
                     if (grid[x][y] == null) {

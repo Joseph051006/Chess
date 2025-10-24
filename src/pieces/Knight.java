@@ -18,18 +18,15 @@ public class Knight extends Piece {
 
     @Override
     public boolean isValidMove(Coordinates from, Coordinates to, Board board, Player currentTurn, Piece selectedPiece) {
-        System.out.println("Pawn");
 
         String playerColor = currentTurn.getColor();
 
         if (Objects.equals(playerColor, selectedPiece.color)){
-            System.out.println(playerColor);
-            checkPattern(from, to, board);
-            return true;
+            return checkPattern(from, to, board);
 
         } else {
             System.out.println("Not your turn");
-            System.out.println(playerColor);
+
             return false;
         }
     }
@@ -42,7 +39,7 @@ public class Knight extends Piece {
         int dx = Math.abs(to.x - from.x);
         int dy = Math.abs(to.y - from.y);
 
-        // Knight moves in an L shape
+
         if (!((dx == 2 && dy == 1) || (dx == 1 && dy == 2))) return false;
 
         return target == null || !target.color.equals(color);

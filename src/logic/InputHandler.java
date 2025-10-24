@@ -13,7 +13,6 @@ class InputHandler {
     private final ArrayList<Integer> coordinates = new ArrayList<Integer>();
     Board board = new Board();
     GameController game = new GameController();
-    GameController currentTurn;
 
     public InputHandler(Board board) {
         this.board = board;
@@ -27,7 +26,7 @@ class InputHandler {
         String[] single = concat.split(regexTwo, 4);
         boolean valid;
 
-        System.out.println(Arrays.deepToString(single));
+
 
         for (byte distribute = 0; distribute < 4; distribute++) {
 
@@ -89,7 +88,7 @@ class InputHandler {
 
 
         Piece selectedPiece = board.getPieceAt(coordinates.get(0), coordinates.get(1), board);
-        System.out.println(selectedPiece);
+
 
         if (selectedPiece == null) {
             System.out.println("No Piece there");
@@ -98,9 +97,9 @@ class InputHandler {
             Coordinates to = new Coordinates(coordinates.get(2), coordinates.get(3));
             Coordinates from = new Coordinates(coordinates.get(0), coordinates.get(1));
 
-            System.out.println("ValidateFromat test");
-            System.out.println(from.x + " " + from.y);
-            System.out.println(to.x + " " + to.x);
+//            System.out.println("ValidateFromat test");
+//            System.out.println(from.x + " " + from.y);
+//            System.out.println(to.x + " " + to.x);
 
             switch (selectedPiece) {
                 case Pawn pawn -> selectedPiece.isValidMove(from, to, board, currentTurn, selectedPiece);
@@ -117,7 +116,7 @@ class InputHandler {
             }
             if (selectedPiece.isValidMove(from, to, board, currentTurn, selectedPiece)) {
 
-                board.movePiece(from.x, from.y,to.x, to.y, board);
+                board.movePiece(from.x, from.y, to.x, to.y, board);
 
                 return true;
 

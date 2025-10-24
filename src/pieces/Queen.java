@@ -17,18 +17,16 @@ public class Queen extends Piece {
 
     @Override
     public boolean isValidMove(Coordinates from, Coordinates to, Board board, Player currentTurn, Piece selectedPiece) {
-        System.out.println("Pawn");
+
 
         String playerColor = currentTurn.getColor();
 
         if (Objects.equals(playerColor, selectedPiece.color)){
-            System.out.println(playerColor);
             checkPattern(from, to, board);
             return true;
 
         } else {
             System.out.println("Not your turn");
-            System.out.println(playerColor);
             return false;
         }
     }
@@ -50,7 +48,7 @@ public class Queen extends Piece {
         int y = from.y + dy;
 
         while (x != to.x || y != to.y) {
-            if (board.grid[x][y] != null) return false; // blocked
+            if (board.grid[x][y] != null) return false;
             x += dx;
             y += dy;
         }

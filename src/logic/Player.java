@@ -9,7 +9,7 @@ public class Player {
     String color;
     java.util.List<Piece> capturedPieces;
 
-    public Player(String name, String color){
+    public Player(String name, String color) {
         this.name = name;
         this.color = color;
     }
@@ -25,7 +25,6 @@ public class Player {
     public String getColor() {
         return color;
     }
-
 
 
 }

@@ -13,22 +13,21 @@ public class Bishop extends Piece {
         super(color, position, icon);
     }
 
-    boolean isValidMove() { return false; }
+    boolean isValidMove() {
+        return false;
+    }
 
     @Override
     public boolean isValidMove(Coordinates from, Coordinates to, Board board, Player currentTurn, Piece selectedPiece) {
-        System.out.println("Pawn");
 
         String playerColor = currentTurn.getColor();
 
-        if (Objects.equals(playerColor, selectedPiece.color)){
-            System.out.println(playerColor);
+        if (Objects.equals(playerColor, selectedPiece.color)) {
             checkPattern(from, to, board);
             return true;
 
         } else {
             System.out.println("Not your turn");
-            System.out.println(playerColor);
             return false;
         }
     }
@@ -38,7 +37,7 @@ public class Bishop extends Piece {
         Piece target = board.grid[to.x][to.y];
         String color = board.grid[from.x][from.y].color;
 
-        // Must move diagonally
+
         if (Math.abs(to.x - from.x) != Math.abs(to.y - from.y)) return false;
 
         int dx = Integer.compare(to.x, from.x);
@@ -48,7 +47,7 @@ public class Bishop extends Piece {
         int y = from.y + dy;
 
         while (x != to.x || y != to.y) {
-            if (board.grid[x][y] != null) return false; // blocked
+            if (board.grid[x][y] != null) return false;
             x += dx;
             y += dy;
         }

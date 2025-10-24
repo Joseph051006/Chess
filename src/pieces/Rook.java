@@ -25,13 +25,13 @@ public class Rook extends Piece {
         String playerColor = currentTurn.getColor();
 
         if (Objects.equals(playerColor, selectedPiece.color)){
-            System.out.println(playerColor);
+
             checkPattern(from, to, board);
             return true;
 
         } else {
             System.out.println("Not your turn");
-            System.out.println(playerColor);
+
             return false;
         }
     }
@@ -41,7 +41,7 @@ public class Rook extends Piece {
         Piece target = board.grid[to.x][to.y];
         String color = board.grid[from.x][from.y].color;
 
-        // Must move in a straight line
+
         if (from.x != to.x && from.y != to.y) return false;
 
         // Check path between from and to
@@ -52,12 +52,12 @@ public class Rook extends Piece {
         int y = from.y + dy;
 
         while (x != to.x || y != to.y) {
-            if (board.grid[x][y] != null) return false; // path blocked
+            if (board.grid[x][y] != null) return false;
             x += dx;
             y += dy;
         }
 
-        // Target must be empty or opposite color
+
         return target == null || !target.color.equals(color);
 
     }

@@ -9,12 +9,11 @@ public class GameController {
     public Board board = new Board();
     public Player[] players = new Player[2];
     public Player currentTurn;
-    public Time timer;
     Player player2 = null;
     Player player1 = null;
     Scanner bro = new Scanner(System.in);
-    public GameController(){
 
+    public GameController() {
 
 
     }
@@ -27,13 +26,14 @@ public class GameController {
         System.out.println("Game initialized.");
         playMove();
     }
+
     public void switchTurn(Player currentTurn, Board board) {
 
-        if (currentTurn == player1 ){
+        if (currentTurn == player1) {
             this.currentTurn = player2;
             board.switchBoard(board);
             playMove();
-        }else {
+        } else {
             this.currentTurn = player1;
             board.switchBoard(board);
             playMove();
@@ -41,12 +41,13 @@ public class GameController {
         }
 
     }
+
     public void playMove() {
         boolean validMove = false;
 
         while (!validMove) {
             if (currentTurn == player1) {
-                System.out.println("Code of player one");
+                System.out.println(player1.name + " 's turn");
 
                 if (possible(player1)) {
                     validMove = true;
@@ -62,7 +63,7 @@ public class GameController {
                 }
 
             } else {
-                System.out.println("Code of player two");
+                System.out.println(player2.name + " 's turn");
 
                 if (possible(player2)) {
                     validMove = true;
@@ -99,15 +100,14 @@ public class GameController {
         }
     }
 
-    public boolean possible(Player player){
+    public boolean possible(Player player) {
         String moveInput = bro.nextLine();
         boolean moveResult = player.makeMove(moveInput, board, currentTurn);
-        System.out.println("Move result: " + moveResult);
+//        System.out.println("Move result: " + moveResult);
         return moveResult;
     }
 
 
-    boolean isCheck(String color) { return false; }
 
     public boolean isCheckmate(String color, Board board) {
         for (int x = 0; x < 8; x++) {

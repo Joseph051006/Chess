@@ -22,11 +22,6 @@ public class Pawn extends Piece {
     }
 
 
-
-
-
-
-
     void promote(Piece newPiece) {
     }
 
@@ -44,58 +39,53 @@ public class Pawn extends Piece {
     @Override
     public boolean isValidMove(Coordinates from, Coordinates to, Board board, Player currentTurn, Piece selectedPiece) {
 
-        System.out.println("Pawn");
 
         String playerColor = currentTurn.getColor();
 
-        if (Objects.equals(playerColor, selectedPiece.color)){
-        System.out.println(playerColor);
-            checkPattern(from, to, board);
-        return true;
+        if (Objects.equals(playerColor, selectedPiece.color)) {
+
+            return checkPattern(from, to, board);
 
         } else {
             System.out.println("Not your turn");
-            System.out.println(playerColor);
+
             return false;
         }
 
     }
 
     @Override
-    public boolean checkPattern(Coordinates from, Coordinates to, Board board){
-        String color = board.grid[from.x][from.y].color;
-        int direction = color.equals("white") ? -1 : 1;
+    public boolean checkPattern(Coordinates from, Coordinates to, Board board) {
         Piece target = board.grid[to.x][to.y];
+        String color = board.grid[from.x][from.y].color;
 
 
-        if (to.x == from.x + direction && to.y == from.y && target == null) {
+        int direction = color.equals("white") ? 1 : -1; // white moves down, black moves up
+
+        int dx = to.x - from.x;
+        int dy = to.y - from.y;
+
+
+        if (dx == 0 && dy == direction && target == null) {
             return true;
         }
 
-        // 2. Two steps forward (first move)
-        if ((color.equals("white") && from.x == 6) || (color.equals("black") && from.x == 1)) {
-            if (to.x == from.x + 2 * direction && to.y == from.y) {
-                if (board.grid[from.x + direction][from.y] == null && target == null) {
-                    return true;
-                }
-            }
-        }
 
-        // 3. Capture
-        if (to.x == from.x + direction && Math.abs(to.y - from.y) == 1) {
-            if (target != null && !target.color.equals(color)) {
+        boolean isFirstMove = (color.equals("white") && from.y == 1) || (color.equals("black") && from.y == 6);
+        if (dx == 0 && dy == 2 * direction && isFirstMove) {
+
+            if (board.grid[from.x][from.y + direction] == null && target == null) {
                 return true;
             }
         }
 
 
+        if ((dx == 1 || dx == -1) && dy == direction && target != null && !target.color.equals(color)) {
+            return true;
+        }
+
         return false;
     }
-
-
-
 }
-
-
 
 
