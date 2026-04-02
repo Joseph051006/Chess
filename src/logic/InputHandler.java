@@ -59,7 +59,7 @@ class InputHandler {
         for (byte iterator = 0; iterator < ROW.length; iterator++) {
             if (ROW[iterator].equals(single[soEnSiech])) {
 
-                coordinates.add((int) iterator);
+                coordinates.add(Integer.valueOf(iterator));
 
             }
         }
@@ -71,7 +71,7 @@ class InputHandler {
         for (byte iterator = 0; iterator < COLUMN.length; iterator++) {
             if (COLUMN[iterator].equals(single[soEnSiech])) {
 
-                coordinates.add((int) iterator);
+                coordinates.add(Integer.valueOf(iterator));
 
             }
         }

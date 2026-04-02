@@ -18,7 +18,7 @@ public class Player {
 
         InputHandler input = new InputHandler(board);
 
-        return input.validateFormat((input.parseMove(move)), currentTurn);
+        return (Boolean) input.validateFormat((input.parseMove(move)), currentTurn);
 
     }
 
