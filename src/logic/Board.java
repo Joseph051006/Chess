@@ -1,6 +1,5 @@
 package logic;
 
-import pieces.Piece;
 import pieces.*;
 
 public class Board {
@@ -10,7 +9,6 @@ public class Board {
     public Board() {
         grid = new Piece[8][8];
     }
-
 
     public void setUpBoard() {
 
@@ -43,6 +41,7 @@ public class Board {
         this.grid[5][1] = new Pawn("white", new Coordinates(5, 1), "♙");
         this.grid[6][1] = new Pawn("white", new Coordinates(6, 1), "♙");
         this.grid[7][1] = new Pawn("white", new Coordinates(7, 1), "♙");
+
         this.grid[0][6] = new Pawn("black", new Coordinates(0, 6), "♟");
         this.grid[1][6] = new Pawn("black", new Coordinates(1, 6), "♟");
         this.grid[2][6] = new Pawn("black", new Coordinates(2, 6), "♟");
@@ -54,7 +53,64 @@ public class Board {
 
     }
 
-    public void printBoard(Board board) {
+    public void printBoard() {
+        for (int y = 7; y >= 0; y--) {
+            for (int x = 0; x < 8; x++) {
+                if (grid[x][y] == null) {
+                    System.out.print("[   ]");
+                } else {
+                    System.out.print("[ " + grid[x][y] + " ]");
+                }
+                if (x == 7) {
+                    System.out.print("\n");
+                }
+            }
+        }
+    }
+
+    Piece getPieceAt(int x, int y) {
+        if (grid[x][y] == null) {
+            return null;
+        }
+        return grid[x][y];
+    }
+
+    void movePiece(int fromX, int fromY, int toX, int toY, Board board) {
+        Piece piece = board.grid[fromX][fromY];
+        if (piece == null) {
+            System.out.println("No Piece there");
+            return;
+        }
+        board.grid[toX][toY] = board.grid[fromX][fromY];
+        board.grid[fromX][fromY] = null;
+    }
+
+
+    public void switchBoard() {
+        isBoardFlipped = !isBoardFlipped;
+        if (isBoardFlipped) {
+            boardToBlack();
+        } else {
+            boardToWhite();
+        }
+    }
+
+    private void boardToBlack() {
+        for (int y = 0; y < 8; y++) {
+            for (int x = 7; x >= 0; x--) {
+                if (grid[x][y] == null) {
+                    System.out.print("[   ]");
+                } else {
+                    System.out.print("[ " + grid[x][y] + " ]");
+                }
+                if (x == 0) {
+                    System.out.print("\n");
+                }
+            }
+        }
+    }
+
+    private void boardToWhite() {
         for (int y = 7; y >= 0; y--) {
             for (int x = 0; x < 8; x++) {
                 if (grid[x][y] == null) {
@@ -70,70 +126,4 @@ public class Board {
     }
 
 
-    Piece getPieceAt(int x, int y, Board board) {
-
-        if (grid[x][y] == null) {
-            return null;
-        }
-        return grid[x][y];
-
-
-    }
-
-    void movePiece(int fromX, int fromY, int toX, int toY, Board board) {
-//        System.out.println("movePiece test");
-//        System.out.println( fromX+ " " + fromY);
-//        System.out.println(toX + " " + toY);
-
-
-        Piece piece = board.grid[fromX][fromY];
-        if (piece == null) {
-            System.out.println("No Piece there");
-            return;
-        }
-
-
-        board.grid[toX][toY] = board.grid[fromX][fromY];
-        board.grid[fromX][fromY] = null;
-
-
-
-    }
-
-
-
-
-    public void switchBoard(Board board) {
-        isBoardFlipped = !isBoardFlipped;
-
-        if (isBoardFlipped) {
-            // Schwarz unten
-            for (int y = 0; y < 8; y++) {
-                for (int x = 7; x >= 0; x--) {
-                    if (grid[x][y] == null) {
-                        System.out.print("[   ]");
-                    } else {
-                        System.out.print("[ " + grid[x][y] + " ]");
-                    }
-                    if (x == 0) {
-                        System.out.print("\n");
-                    }
-                }
-            }
-        } else {
-            // Weiss unten
-            for (int y = 7; y >= 0; y--) {
-                for (int x = 0; x < 8; x++) {
-                    if (grid[x][y] == null) {
-                        System.out.print("[   ]");
-                    } else {
-                        System.out.print("[ " + grid[x][y] + " ]");
-                    }
-                    if (x == 7) {
-                        System.out.print("\n");
-                    }
-                }
-            }
-        }
-    }
 }

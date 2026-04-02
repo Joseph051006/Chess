@@ -1,13 +1,8 @@
 package logic;
 
-import pieces.Piece;
-
-import java.util.Arrays;
-
 public class Player {
     String name;
     String color;
-    java.util.List<Piece> capturedPieces;
 
     public Player(String name, String color) {
         this.name = name;
@@ -15,16 +10,11 @@ public class Player {
     }
 
     public Boolean makeMove(String move, Board board, Player currentTurn) {
-
         InputHandler input = new InputHandler(board);
-
         return input.validateFormat((input.parseMove(move)), currentTurn);
-
     }
-
     public String getColor() {
         return color;
     }
-
 
 }

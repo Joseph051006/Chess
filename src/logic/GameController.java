@@ -7,22 +7,15 @@ import java.util.Scanner;
 
 public class GameController {
     public Board board = new Board();
-    public Player[] players = new Player[2];
     public Player currentTurn;
     Player player2 = null;
     Player player1 = null;
     Scanner bro = new Scanner(System.in);
 
-    public GameController() {
-
-
-    }
-
-
     public void startGame() {
         createPlayer();
         board.setUpBoard();
-        board.printBoard(board);
+        board.printBoard();
         System.out.println("Game initialized.");
         playMove();
     }
@@ -31,15 +24,11 @@ public class GameController {
 
         if (currentTurn == player1) {
             this.currentTurn = player2;
-            board.switchBoard(board);
-            playMove();
         } else {
             this.currentTurn = player1;
-            board.switchBoard(board);
-            playMove();
-
         }
-
+        board.switchBoard();
+        playMove();
     }
 
     public void playMove() {
@@ -83,16 +72,16 @@ public class GameController {
 
     void createPlayer() {
 
-        Scanner bro = new Scanner(System.in);
+        Scanner name = new Scanner(System.in);
 
         for (byte increment = 1; increment < 3; increment++) {
 
             if (increment == 1) {
                 System.out.println("Please Enter your name Player " + increment);
-                player2 = new Player(bro.nextLine(), "black");
+                player2 = new Player(name.nextLine(), "black");
             } else {
                 System.out.println("Please Enter your name Player " + increment);
-                player1 = new Player(bro.nextLine(), "white");
+                player1 = new Player(name.nextLine(), "white");
             }
 
             currentTurn = player1;
@@ -102,12 +91,8 @@ public class GameController {
 
     public boolean possible(Player player) {
         String moveInput = bro.nextLine();
-        boolean moveResult = player.makeMove(moveInput, board, currentTurn);
-//        System.out.println("Move result: " + moveResult);
-        return moveResult;
+        return player.makeMove(moveInput, board, currentTurn);
     }
-
-
 
     public boolean isCheckmate(String color, Board board) {
         for (int x = 0; x < 8; x++) {
@@ -118,8 +103,6 @@ public class GameController {
                 }
             }
         }
-
-
         return true;
     }
 }
